@@ -1,15 +1,13 @@
 package com.ilya.learning.recycleview
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-
 
 
 internal class PersonAdapter(val persons: ArrayList<Persons>,var mContext: Context)  : RecyclerView.Adapter<PersonAdapter.PersonHolder>()  {
@@ -24,13 +22,16 @@ internal class PersonAdapter(val persons: ArrayList<Persons>,var mContext: Conte
             }
 
             override fun onClick(v: View) {
-                mContext.startActivity(Intent(mContext, SecondActivity::class.java).apply
+                val activity = mContext as Activity
+                activity.startActivityForResult(Intent(mContext, SecondActivity::class.java).apply
                 {
                     putExtra(PERSON_ID, person_id_text.text)
                     putExtra(PERSON_NAME, person_name_text.text)
-                })
+
+                },1)
 
             }
+
         }
 
 

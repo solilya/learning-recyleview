@@ -1,12 +1,14 @@
 package com.ilya.learning.recycleview
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 
 class SecondActivity: AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,8 +22,16 @@ class SecondActivity: AppCompatActivity() {
         val person_name_text: TextView = findViewById(R.id.name_sec)
         person_name_text.setText(person_name)
 
+
+
+
         val back_button:TextView = findViewById(R.id.back_button)
-        back_button.setOnClickListener { finish()
+        back_button.setOnClickListener {
+            val intent = Intent()
+            intent.putExtra("PERSON_ID",  person_id)
+            intent.putExtra("PERSON_NAME",  "!!!!!!!!!!!!!!!!!!!!!")
+            setResult(RESULT_OK, intent)
+            finish()
             }
 
     }
